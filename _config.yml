@@ -1,0 +1,4 @@
+name: Balanced Scoring Project
+description: A framework for incentivizing delivery, innovation, and collaboration.
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title/

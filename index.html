@@ -1,218 +1,32 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designing a Balanced Scoring System for Engineering Teams</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="app.js"></script>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <a href="index.html" class="logo">Balanced Scoring Project</a>
-            <button id="theme-toggle" class="theme-toggle-btn">
-                🌙 Dark Mode
-            </button>
-        </header>
-
-        <main>
-            <article>
-                <h1>Designing a Balanced Scoring System for Engineering Teams</h1>
-                <div class="post-meta">
-                    <span>Published on July 14, 2026</span>
-                    <span>•</span>
-                    <span>5 Min Read</span>
-                    <span>•</span>
-                    <span>by Ayman</span>
-                </div>
-
-                <div class="post-content">
-                    <p>
-                        Measuring engineering performance has historically been a significant challenge. Traditional metrics like velocity, lines of code, or pull requests merged often create tunnel vision, encouraging developers to optimize for a single number rather than the quality or cooperative health of the codebase.
-                    </p>
-
-                    <p>
-                        To resolve this, we are drafting a <strong>Balanced Scoring System</strong>. This framework splits contributions into three distinct pillars—Delivery, Innovation, and Collaboration—and ties performance to transparent, tiered reward structures that encourage developmental growth rather than individual competition.
-                    </p>
-
-                    <!-- Tracker UI Widget -->
-                    <div class="tracker-widget">
-                        <div class="tracker-left">
-                            <div class="tier-title-display" id="tier-display">Silver Tier</div>
-                            
-                            <div class="circle-chart-container">
-                                <svg class="circle-chart" viewBox="0 0 200 200">
-                                    <circle class="circle-bg" cx="100" cy="100" r="80" />
-                                    <circle class="circle-progress" id="circle-progress" cx="100" cy="100" r="80" 
-                                            stroke-dasharray="502.6" stroke-dashoffset="318" />
-                                </svg>
-                                <div class="circle-text">
-                                    <div class="circle-name">John Doe</div>
-                                    <div class="circle-score"><span id="total-score">55</span> / 150 pts</div>
-                                </div>
-                            </div>
-
-                            <div class="category-bars">
-                                <div class="bar-item">
-                                    <div class="bar-header">
-                                        <span>Delivery</span>
-                                        <span id="delivery-label-score">25</span>
-                                    </div>
-                                    <div class="bar-bg">
-                                        <div class="bar-fill delivery" style="width: 50%;"></div>
-                                    </div>
-                                </div>
-                                <div class="bar-item">
-                                    <div class="bar-header">
-                                        <span>Innovation</span>
-                                        <span id="innovation-label-score">15</span>
-                                    </div>
-                                    <div class="bar-bg">
-                                        <div class="bar-fill innovation" style="width: 30%;"></div>
-                                    </div>
-                                </div>
-                                <div class="bar-item">
-                                    <div class="bar-header">
-                                        <span>Collaboration</span>
-                                        <span id="collaboration-label-score">15</span>
-                                    </div>
-                                    <div class="bar-bg">
-                                        <div class="bar-fill collaboration" style="width: 30%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tracker-right">
-                            <h3 class="widget-title">Rewards Tiers</h3>
-                            
-                            <div class="tiers-list">
-                                <div class="tier-badge-row" data-tier="bronze">
-                                    <span class="tier-badge bronze">Bronze Tier</span>
-                                    <span class="tier-range">0–50 points</span>
-                                </div>
-                                <div class="tier-badge-row active" data-tier="silver">
-                                    <span class="tier-badge silver">Silver Tier</span>
-                                    <span class="tier-range">51–100 points</span>
-                                </div>
-                                <div class="tier-badge-row" data-tier="gold">
-                                    <span class="tier-badge gold">Gold Tier</span>
-                                    <span class="tier-range">101–150 points</span>
-                                </div>
-                                <div class="tier-badge-row" data-tier="platinum">
-                                    <span class="tier-badge platinum">Platinum Tier</span>
-                                    <span class="tier-range">151+ points</span>
-                                </div>
-                            </div>
-
-                            <div class="calculator-inputs">
-                                <h3 class="widget-title" style="font-size: 1.15rem; margin-bottom: 0.75rem;">Interactive Score Adjustment</h3>
-                                <div class="input-group">
-                                    <label>Delivery</label>
-                                    <div class="input-control" id="delivery-ctrl">
-                                        <button class="btn-ctrl minus">-</button>
-                                        <span class="score-value" id="delivery-val">25</span>
-                                        <button class="btn-ctrl plus">+</button>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label>Innovation</label>
-                                    <div class="input-control" id="innovation-ctrl">
-                                        <button class="btn-ctrl minus">-</button>
-                                        <span class="score-value" id="innovation-val">15</span>
-                                        <button class="btn-ctrl plus">+</button>
-                                    </div>
-                                </div>
-                                <div class="input-group">
-                                    <label>Collaboration</label>
-                                    <div class="input-control" id="collaboration-ctrl">
-                                        <button class="btn-ctrl minus">-</button>
-                                        <span class="score-value" id="collaboration-val">15</span>
-                                        <button class="btn-ctrl plus">+</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h2>1. The Scoring Pillars</h2>
-                    <p>
-                        A balanced approach categorizes engineering efforts beyond raw task completion to encourage balanced growth:
-                    </p>
-                    <ul>
-                        <li><strong>Delivery (Meeting Goals):</strong> Assessing predictability, execution, code quality, and release outcomes.</li>
-                        <li><strong>Innovation:</strong> Quantifying improvements, including research, tooling optimizations, internal developer experience, or filing patents.</li>
-                        <li><strong>Collaboration:</strong> Incentivizing mentoring, pair programming, documentation, and reviewing code.</li>
-                    </ul>
-
-                    <h2>2. Transparent Scoring Matrix</h2>
-                    <p>
-                        Clearly detailing point adjustments removes ambiguity and manager bias from performance reviews:
-                    </p>
-
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Pillar</th>
-                                    <th>Contribution/Action</th>
-                                    <th>Point Impact</th>
-                                    <th>Verification Method</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Innovation</strong></td>
-                                    <td>Filing a patent or leading a successful pilot project</td>
-                                    <td>+10 points</td>
-                                    <td>IP Committee Approval</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Collaboration</strong></td>
-                                    <td>Mentoring a junior engineer or onboarding buddy</td>
-                                    <td>+5 points</td>
-                                    <td>Signed Onboarding Checklist</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Delivery</strong></td>
-                                    <td>Repeated missed deadlines without justification</td>
-                                    <td>–5 points</td>
-                                    <td>Sprint Post-Mortem Log</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="callout">
-                        <div class="callout-title">Goodhart's Law Guardrail</div>
-                        <p>
-                            To prevent developers from gaming the system (e.g., ignoring core sprint tasks to write minor patents), teams must implement a minimum <strong>Delivery Threshold</strong>. An engineer cannot advance past the Bronze Tier unless they meet the core delivery baseline.
-                        </p>
-                    </div>
-
-                    <h2>3. Tiered Rewards</h2>
-                    <p>
-                        Rather than docking base salaries, rewards are structured positively to encourage high performance. Compensation increases via bonuses and perks corresponding to points tier levels:
-                    </p>
-                    <ul>
-                        <li><strong>Bronze Tier (0-50 pts):</strong> Baseline compensation.</li>
-                        <li><strong>Silver Tier (51-100 pts):</strong> +5% performance bonus.</li>
-                        <li><strong>Gold Tier (101-150 pts):</strong> +10% performance bonus + recognition perks.</li>
-                        <li><strong>Platinum Tier (151+ pts):</strong> +15% performance bonus + custom conference budget.</li>
-                    </ul>
-
-                    <h2>4. Continuous Feedback Loops</h2>
-                    <p>
-                        Points are discussed during regular 1-on-1s and formal quarterly reviews. This ensures the numbers act as a developmental guide rather than a punitive metric. Adjustments are discussed transparently and calibration is handled continuously to keep the system balanced.
-                    </p>
-                </div>
-            </article>
-        </main>
-
-        <footer>
-            <p>&copy; 2026 Balanced Scoring Project. Open-sourced under MIT License.</p>
-        </footer>
+---
+layout: default
+title: Home
+---
+<div style="max-width: 800px; margin: 0 auto; padding: 2rem 0;">
+    <h1 style="font-family: var(--font-heading); font-size: 2.25rem; font-weight: 800; margin-bottom: 2rem; border-bottom: 2px solid var(--card-border); padding-bottom: 0.5rem;">
+        Articles & Publications
+    </h1>
+    
+    <div class="posts-list" style="display: flex; flex-direction: column; gap: 2rem;">
+        {% for post in site.posts %}
+        <article class="post-card" style="background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 1.75rem; box-shadow: var(--shadow); transition: transform var(--transition-speed); display: flex; flex-direction: column; gap: 0.75rem;">
+            <h2 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; margin: 0;">
+                <a href="{{ post.url | relative_url }}" style="color: var(--text-color); text-decoration: none; transition: color var(--transition-speed);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-color)'">
+                    {{ post.title }}
+                </a>
+            </h2>
+            <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">
+                {{ post.date | date: "%B %d, %Y" }} • {{ post.read_time }}
+            </div>
+            <p style="margin: 0; color: var(--text-color); opacity: 0.85; font-size: 0.95rem; line-height: 1.5;">
+                {{ post.description }}
+            </p>
+            <a href="{{ post.url | relative_url }}" style="display: inline-block; align-self: flex-start; margin-top: 0.5rem; font-family: var(--font-heading); font-weight: 600; font-size: 0.9rem; color: var(--primary); text-decoration: none; transition: transform var(--transition-speed);" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='none'">
+                Read Article &rarr;
+            </a>
+        </article>
+        {% else %}
+        <p style="color: var(--text-muted); font-style: italic;">No posts found yet.</p>
+        {% endfor %}
     </div>
-</body>
-</html>
+</div>

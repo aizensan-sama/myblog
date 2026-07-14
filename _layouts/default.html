@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | {{ site.name }}</title>
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+    <script defer src="{{ '/app.js' | relative_url }}"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="{{ '/' | relative_url }}" class="logo">{{ site.name }}</a>
+            <button id="theme-toggle" class="theme-toggle-btn">
+                🌙 Dark Mode
+            </button>
+        </header>
+
+        <main>
+            {{ content }}
+        </main>
+
+        <footer>
+            <p>&copy; 2026 {{ site.name }}. Open-sourced under MIT License.</p>
+        </footer>
+    </div>
+</body>
+</html>
